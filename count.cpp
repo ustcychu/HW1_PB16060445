@@ -7,7 +7,7 @@
 
 using namespace std;
 
-extern int characters = 0, words = 0, lines = 0;
+int characters = 0, words = 0, lines = 0;
 struct word 
 { 
     char c[30]; 
@@ -23,6 +23,7 @@ void CountWordsFrequency(void);
 void HeapAdjust(int *a,int i,int size);
 void BuildHeap(int *a,int size);
 void HeapSort(int *a,int size);
+
 
 int main()
 {
@@ -79,7 +80,7 @@ void CountWords()
 
 int JudgeEqual(char a[], char b[]) 
 {
-	int i=0, la=strlen(a), lb=strlen(b);
+	int i=0, j, la=strlen(a), lb=strlen(b);
 	char a1[30], b1[30];
 	if(la < lb)
 	{
@@ -87,7 +88,9 @@ int JudgeEqual(char a[], char b[])
 		while((a[i] >= '0' && a[i] <= '9') && (b[i] >= '0' && b[i] <= '9')) i--;
 		if(((a[i] >= 'A' && a[i] <= 'Z') || (a[i] >= 'a' && a[i] <= 'z')) && ((b[i] >= 'A' && b[i] <= 'Z') || (b[i] >= 'a' && b[i] <= 'z')))
 		{
+			j=i;
 			for(; i>=0; i--) if(a[i] != b[i]) return 0;
+			if(a[j+1]<b[j+1]) strcpy(b,a);
 			return 1;
 		}
 		return 0;
@@ -98,7 +101,9 @@ int JudgeEqual(char a[], char b[])
 		while((a[i] >= '0' && a[i] <= '9') && (b[i] >= '0' && b[i] <= '9')) i--;
 		if(((a[i] >= 'A' && a[i] <= 'Z') || (a[i] >= 'a' && a[i] <= 'z')) && ((b[i] >= 'A' && b[i] <= 'Z') || (b[i] >= 'a' && b[i] <= 'z')))
 		{
+			j=i;
 			for(; i>=0; i--) if(a[i] != b[i]) return 0;
+			if(a[j+1]<b[j+1]) strcpy(b,a);
 			return 1;
 		}
 		return 0;
@@ -108,7 +113,9 @@ int JudgeEqual(char a[], char b[])
 		while((a[i] >= '0' && a[i] <= '9') && (b[i] >= '0' && b[i] <= '9')) i--;
 		if(((a[i] >= 'A' && a[i] <= 'Z') || (a[i] >= 'a' && a[i] <= 'z')) && ((b[i] >= 'A' && b[i] <= 'Z') || (b[i] >= 'a' && b[i] <= 'z')))
 		{
+			j=i;
 			for(; i>=0; i--) if(a[i] != b[i]) return 0;
+			if(a[j+1]<b[j+1]) strcpy(b,a);
 			return 1;
 		}
 		return 0;
@@ -138,7 +145,10 @@ void CountWordsFrequency()
 		    b[i]='\0'; i=0;  m=0; 
 		    for(j=0;j < k;j++) 
             {  
-                if( JudgeEqual(b, word[j].c) ==1 ){ m=1; break;} 
+                if( JudgeEqual(b, word[j].c) ==1 )
+				{ 
+				    m=1; break;
+				} 
             } 
             if(m) word[j].n++;
             else{
@@ -226,6 +236,7 @@ void HeapSort(int *a,int size)    //¶ÑÅÅÐò
 		  }
 	}
 } 
+
 
 
 
