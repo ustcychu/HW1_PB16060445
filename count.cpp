@@ -26,23 +26,24 @@ struct Phrase
     int n; 
 }phrase[10000];
 
+//函数声明 功能基本如函数名所示 
 
+void Count_Characters_Lines(void);             //统计字符数和行数 
+void CountWords(void);                         //统计单词总数 
+int  JudgeWordEqual(char a[], char b[]);       //判断两个单词是否等价 
+void CountWordsFrequency(void);                //统计各单词频率及排序 
 
-void Count_Characters_Lines(void);
-void CountWords(void);
-int JudgeWordEqual(char a[], char b[]);
-void CountWordsFrequency(void);
-
-void HeapAdjustWord(int *a,int i,int size);
-void BuildHeapWord(int *a,int size);
-void HeapSortWord(int *a,int size);
+void HeapAdjustWord(int *a,int i,int size);    //调整堆 
+void BuildHeapWord(int *a,int size);           //建堆 
+void HeapSortWord(int *a,int size);            //针对单词频率统计的堆排序 
 
 void HeapAdjustPhrase(int *a,int i,int size);
 void BuildHeapPhrase(int *a,int size);
-void HeapSortPhrase(int *a,int size);
+void HeapSortPhrase(int *a,int size);          //针对词组频率统计的堆排序 
 
-void CountPhrasesFrequency(void);
-int JudgePhraseEqual(Column p, char a[], char b[]);
+void CountPhrasesFrequency(void);              //统计各词组频率及排序 
+int JudgePhraseEqual(Column p, char a[], char b[]);          //判断后两个单词组成的词组是否与第一个词组等价 
+
 
 int main()
 {
