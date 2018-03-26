@@ -10,19 +10,19 @@
 
 using namespace std;
 
-int characters = 0, words = 0, lines = 0, k=1, l=1;  // k表示word频率  l表示phrase频率 
+int characters = 0, words = 0, lines = 0,k,l;  
 FILE *fin, *fout;
 
 struct Word 
 { 
-    char c[200]; 
+    char c[100]; 
     int n; 
-}word[NUM], Hash[NUM]; 
+}word[NUM]; 
 
 struct Column
 {
-	char c1[200];
-	char c2[200];
+	char c1[100];
+	char c2[100];
 };
 
 struct Phrase 
@@ -56,13 +56,13 @@ void statistics(void);
 int main()
 {
 	char folderpath[100] = "C:/Users/pc/Desktop/newsample", q[200], *p;
-	int a[NUM], j;
+	int a[NUM], i, j, t=1, l=1;
 	vector<string> filepath;
 	//gets(folderpath);
 	getFiles(folderpath, filepath);
 	int fpsize = filepath.size();
 	fout = fopen("C:/Users/pc/Desktop/result.txt", "w");
-	for (int i = 0; i < fpsize; i++)
+	for (i = 0; i < fpsize; i++)
 	{
 		strcpy(q, filepath[i].c_str()); p = q;
 		while (*p != '\0')
@@ -83,8 +83,24 @@ int main()
 
 	fprintf(fout, "characters: %d\nlines: %d\n", characters, lines);
 	fprintf(fout, "words: %d\n\n", words);
-	for (j = 1; j <= k; j++) a[j] = j; HeapSortWord(a, k - 1);
-	for (j = 1; j <= l; j++) a[j] = j; HeapSortPhrase(a, l - 1);
+	
+	for(i=1; i<=52; i++)
+	{
+		for(j=i; word[j].n && j<NUM ; j+=52)
+		{
+			a[t]=j; t++;
+		}
+	}
+	HeapSortWord(a, t - 1);
+	
+	for(i=1; i<=52; i++)
+	{
+		for(j=i; phrase[j].n && j<NUM ; j+=52)
+		{
+			a[l]=j; l++;
+		}
+	}
+	HeapSortPhrase(a, l - 1);
 
 
 
@@ -123,8 +139,8 @@ int JudgeOrder(char a[], char b[])
 		else if ((a[i] == b[i])) return 0;
 		else return 1;
 	}
-	if (a[i] == NULL && b[i] != NULL) return -1;
-	else if (a[i] != NULL && b[i] == NULL) return 1;
+	if (!a[i] && b[i]) return -1;
+	else if (a[i] && !b[i] ) return 1;
 	else return 0;
 }
 
@@ -194,7 +210,7 @@ int JudgeWordEqual(char a[], char b[])
 				if (a[i] < b[i]) { strcpy(b, a); break; }
 				else if ((a[i] > b[i])) break;
 			}
-			if (a[i] == NULL && b[i] != NULL) strcpy(b, a);
+			if (!a[i] && b[i]) strcpy(b, a);
 			return 1;
 		}
 		return 0;
@@ -212,7 +228,7 @@ int JudgeWordEqual(char a[], char b[])
 				if (a[i] < b[i]) { strcpy(b, a); break; }
 				else if ((a[i] > b[i])) break;
 			}
-			if (a[i] == NULL && b[i] != NULL) strcpy(b, a);
+			if (!a[i] && b[i]) strcpy(b, a);
 			return 1;
 		}
 		return 0;
@@ -229,7 +245,7 @@ int JudgeWordEqual(char a[], char b[])
 				if (a[i] < b[i]) { strcpy(b, a); break; }
 				else if ((a[i] > b[i])) break;
 			}
-			if (a[i] == NULL && b[i] != NULL) strcpy(b, a);
+			if (!a[i] && b[i]) strcpy(b, a);
 			return 1;
 		}
 		return 0;
@@ -320,6 +336,7 @@ void CountPhrasesFrequency()
 					break;
 				}
 			}
+			
 			if (m) word[j].n++;
 			else {
 				word[k].n = 1; strcpy(word[k].c, b); k++;
@@ -361,18 +378,21 @@ void CountPhrasesFrequency()
 	{
 		words++;
 		b[i] = '\0'; m = 0; n = 0;
+		
 		for (j = 1; j < k; j++)
-		{
-			if (JudgeWordEqual(b, word[j].c) == 1)
 			{
-				m = 1;
-				break;
+				if (JudgeWordEqual(b, word[j].c) == 1)
+				{
+					m = 1;
+					break;
+				}
 			}
-		}
-		if (m) word[j].n++;
-		else {
-			word[k].n = 1; strcpy(word[k].c, b); k++;
-		}
+			
+			if (m) word[j].n++;
+			else {
+				word[k].n = 1; strcpy(word[k].c, b); k++;
+			}
+			
 		if (temp[0])
 		{
 			for (j = 1; j<l; j++)
@@ -395,7 +415,7 @@ void CountPhrasesFrequency()
 
 int JudgePhraseEqual(Column p, char a[], char b[])
 {
-	if (JudgeWordEqual(a, p.c1) == 1 && JudgeWordEqual(b, p.c2) == 1) return 1;
+	if (JudgeWordEqual(p.c1, a) == 1 && JudgeWordEqual(p.c2, b) == 1) return 1;
 	return 0;
 }
 
@@ -489,7 +509,7 @@ void HeapSortPhrase(int *a, int size)    //堆排序
 
 void statistics()
 {
-	int i = 0, j = 0, flag = 4, mark = 1, m = 1, n = 1;
+	int i = 0, j = 0, flag = 4, mark = 1, m = 1, n = 1, ad;
 	char ch, ch1, b[200], temp[200];
 	while ((ch = fgetc(fin)) != EOF)
 	{
@@ -507,33 +527,31 @@ void statistics()
 			flag = 4; words++; mark = 1;
 			b[i] = '\0'; i = 0;  m = 0; n = 0;
 
-			for (j = 1; j < k; j++)
-			{
-				if (JudgeWordEqual(b, word[j].c) == 1)
-				{
-					m = 1;
-					break;
-				}
-			}
+		    if(b[0]>='a' && b[0]<='z') ad= (int)b[0]-96;
+			else ad = (int)b[0]-38;
 			
-			if (m) word[j].n++;
-			else {
-				word[k].n = 1; strcpy(word[k].c, b); k++;
+			while(word[ad].n!=0 && JudgeWordEqual(b,word[ad].c)==0)
+			{
+				ad=(ad+52)%NUM;
 			}
+			if(word[ad].n==0)	strcpy(word[ad].c,b);
+			word[ad].n++;
 		     
 			if (temp[0])
 			{
-				for (j = 1; j<l; j++)
-				{
-					if (JudgePhraseEqual(phrase[j].p, temp, b) == 1)
-					{
-						n = 1; break;
-					}
+				if(temp[0]>='a' && temp[0]<='z') ad= (int)temp[0]-96;
+			    else if(temp[0]>='A' && temp[0]<='Z') ad = (int)temp[0]-38;
+			    else ad=0;
+			    while(phrase[ad].n!=0 && JudgePhraseEqual(phrase[ad].p, temp, b) == 0)
+			    {
+				    ad=(ad+52)%NUM;
+			    }
+			    if(phrase[ad].n==0)
+			    {
+			    	strcpy(phrase[ad].p.c1, temp); strcpy(phrase[ad].p.c2, b);
 				}
-				if (n) phrase[j].n++;
-				else {
-					phrase[l].n = 1; strcpy(phrase[l].p.c1, temp); strcpy(phrase[l].p.c2, b); l++;
-				}
+			    phrase[ad].n++;
+				
 			}
 			strcpy(temp, b);
 			continue;
@@ -558,35 +576,36 @@ void statistics()
 	{
 		words++;
 		b[i] = '\0'; m = 0; n = 0;
-		for (j = 1; j < k; j++)
-		{
-			if (JudgeWordEqual(b, word[j].c) == 1)
+		
+		if(b[0]>='a' && b[0]<='z') ad= (int)b[0]-96;
+			else ad = (int)b[0]-38;
+			while(word[ad].n!=0 && JudgeWordEqual(b,word[ad].c)==0)
 			{
-				m = 1;
-				break;
+				ad=(ad+52)%NUM;
 			}
-		}
-		if (m) word[j].n++;
-		else {
-			word[k].n = 1; strcpy(word[k].c, b); k++;
-		}
+			if(word[ad].n==0)	strcpy(word[ad].c,b);
+			word[ad].n++;
+			
 		if (temp[0])
 		{
-			for (j = 1; j<l; j++)
-			{
-				if (JudgePhraseEqual(phrase[j].p, temp, b) == 1)
-				{
-					n = 1; break;
+			if(temp[0]>='a' && temp[0]<='z') ad= (int)temp[0]-96;
+			    else if(temp[0]>='A' && temp[0]<='Z') ad = (int)temp[0]-38;
+			    else ad=0;
+			    while(phrase[ad].n!=0 && JudgePhraseEqual(phrase[ad].p, temp, b) == 0)
+			    {
+				    ad=(ad+52)%NUM;
+			    }
+			    if(phrase[ad].n==0)
+			    {
+			    	strcpy(phrase[ad].p.c1, temp); strcpy(phrase[ad].p.c2, b);
 				}
-			}
-			if (n) phrase[j].n++;
-			else {
-				phrase[l].n = 1; strcpy(phrase[l].p.c1, temp); strcpy(phrase[l].p.c2, b); l++;
-			}
+			    phrase[ad].n++;
 		}
 	}
 
 
 
 }
+
+
 
