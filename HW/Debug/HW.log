@@ -1,0 +1,6 @@
+﻿  stdafx.cpp
+  HW.cpp
+d:\vs\vs footscript\hw\hw\hw.cpp(60): warning C4101: “j”: 未引用的局部变量
+d:\vs\vs footscript\hw\hw\hw.cpp(542): warning C4101: “ad1”: 未引用的局部变量
+d:\vs\vs footscript\hw\hw\hw.cpp(543): warning C4101: “p”: 未引用的局部变量
+  HW.vcxproj -> D:\VS\VS FootScript\HW\Debug\HW.exe

@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+      <FILENAME>hw.cpp</FILENAME>
+      <LINE>60</LINE>
+      <COLUMN>35</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>“l”的局部声明遮蔽了此前位于“13”行(“d:\vs\vs footscript\hw\hw\hw.cpp”中)的声明。</DESCRIPTION>
+    <FUNCTION>main</FUNCTION>
+    <DECORATED>main</DECORATED>
+    <FUNCLINE>57</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>13</LINE>
+        <COLUMN>45</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+      <FILENAME>hw.cpp</FILENAME>
+      <LINE>57</LINE>
+      <COLUMN>4</COLUMN>
+    </SFA>
+    <DEFECTCODE>6262</DEFECTCODE>
+    <DESCRIPTION>函数使用了堆栈的“800340”个字节: 超过了 /analyze:stacksize '16384'。 请考虑将某些数据移到堆中。</DESCRIPTION>
+    <FUNCTION>main</FUNCTION>
+    <DECORATED>main</DECORATED>
+    <FUNCLINE>57</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+      <FILENAME>hw.cpp</FILENAME>
+      <LINE>156</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>6001</DEFECTCODE>
+    <DESCRIPTION>使用未初始化的内存“ch1”。</DESCRIPTION>
+    <FUNCTION>Count_Characters_Lines</FUNCTION>
+    <DECORATED>?Count_Characters_Lines@@YAXXZ</DECORATED>
+    <FUNCLINE>147</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>149</LINE>
+        <COLUMN>6</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>149</LINE>
+        <COLUMN>10</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>声明</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>未初始化“ch1”</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>150</LINE>
+        <COLUMN>26</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>分支</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>跳过此循环(假定“((ch=fgetc(fin)))!=((-1))”为 false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>156</LINE>
+        <COLUMN>9</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>使用情况</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>已使用“ch1”，但可能尚未将其初始化</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+      <FILENAME>hw.cpp</FILENAME>
+      <LINE>600</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>6001</DEFECTCODE>
+    <DESCRIPTION>使用未初始化的内存“ch1”。</DESCRIPTION>
+    <FUNCTION>statistics</FUNCTION>
+    <DECORATED>?statistics@@YAXXZ</DECORATED>
+    <FUNCLINE>540</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>542</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>542</LINE>
+        <COLUMN>12</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>542</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>542</LINE>
+        <COLUMN>29</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>542</LINE>
+        <COLUMN>39</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>542</LINE>
+        <COLUMN>46</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>542</LINE>
+        <COLUMN>53</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>542</LINE>
+        <COLUMN>57</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>542</LINE>
+        <COLUMN>62</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>543</LINE>
+        <COLUMN>6</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>543</LINE>
+        <COLUMN>10</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>声明</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>未初始化“ch1”</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>543</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>543</LINE>
+        <COLUMN>23</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>543</LINE>
+        <COLUMN>34</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>544</LINE>
+        <COLUMN>26</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>分支</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>跳过此循环(假定“((ch=fgetc(fin)))!=((-1))”为 false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\vs\vs footscript\hw\hw\</FILEPATH>
+        <FILENAME>hw.cpp</FILENAME>
+        <LINE>600</LINE>
+        <COLUMN>9</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>使用情况</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>已使用“ch1”，但可能尚未将其初始化</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT></DEFECTS>
